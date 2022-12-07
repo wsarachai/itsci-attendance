@@ -38,7 +38,7 @@ public class HibernateConf {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "org.itsci.shop.model" });
+        sessionFactory.setPackagesToScan(new String[] { "org.itsci.attendance.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

@@ -30,7 +30,8 @@ public class TestMain {
         GenerateKeyPair g = new GenerateKeyPair();
 
         JSONObject data = new JSONObject();
-        data.put("id", "1001");
+        data.put("sec_id", "sec-1001");
+        data.put("attend_id", "attend-1001");
         data.put("key", g.loadPublicKey());
         return data.toString(2);
     }

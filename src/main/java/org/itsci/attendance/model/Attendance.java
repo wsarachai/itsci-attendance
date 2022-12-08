@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "attendances")
@@ -14,11 +15,9 @@ public class Attendance {
     @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
     private int weekNo;
-    private Date date;
-    @Column(columnDefinition="TEXT")
-    private String publicKey;
-    @Column(columnDefinition="TEXT")
-    private String privateKey;
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn (name = "attendance_id")
+    private Set<StudentAttendance> studentAttendances;
 
     public long getId() {
         return id;
@@ -36,27 +35,11 @@ public class Attendance {
         this.weekNo = weekNo;
     }
 
-    public Date getDate() {
-        return date;
+    public Set<StudentAttendance> getStudentAttendances() {
+        return studentAttendances;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getPublicKey() {
-        return publicKey;
-    }
-
-    public void setPublicKey(String publicKey) {
-        this.publicKey = publicKey;
-    }
-
-    public String getPrivateKey() {
-        return privateKey;
-    }
-
-    public void setPrivateKey(String privateKey) {
-        this.privateKey = privateKey;
+    public void setStudentAttendances(Set<StudentAttendance> studentAttendances) {
+        this.studentAttendances = studentAttendances;
     }
 }

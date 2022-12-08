@@ -13,10 +13,15 @@ public class Register {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
-    @ManyToOne
-    private Section section;
-    @OneToMany
-    private List<StudentAttendance> studentAttendances;
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="student_id")
+    private Student student;
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="section_id")
+    private Lecture lecture;
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="laboratory_id")
+    private Laboratory laboratory;
 
     public long getId() {
         return id;
@@ -26,19 +31,4 @@ public class Register {
         this.id = id;
     }
 
-    public Section getSection() {
-        return section;
-    }
-
-    public void setSection(Section section) {
-        this.section = section;
-    }
-
-    public List<StudentAttendance> getStudentAttendances() {
-        return studentAttendances;
-    }
-
-    public void setStudentAttendances(List<StudentAttendance> studentAttendances) {
-        this.studentAttendances = studentAttendances;
-    }
 }

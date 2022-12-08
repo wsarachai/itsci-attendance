@@ -6,19 +6,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-//@Configuration
-//@EnableWebSecurity
+@Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
-//    @Bean
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests(configurer -> {
-            configurer.antMatchers().permitAll();
-//            configurer.antMatchers("/user-profile/**").authenticated()
-//                    .antMatchers("/product/**").hasRole("MANAGER")
-//                    .antMatchers("/shop/**").hasRole("MANAGER")
-//                    .antMatchers("/category/**").hasRole("ADMIN")
-//                    .antMatchers("/member/**").hasRole("ADMIN");
+            configurer.antMatchers("/user-profile/**").authenticated()
+                    .antMatchers("/system/**").hasRole("ADMIN")
+                    .antMatchers("/teacher/**").hasRole("TEACHER")
+                    .antMatchers("/student/**").hasRole("STUDENT");
         });
 
         http.exceptionHandling(configurer -> {

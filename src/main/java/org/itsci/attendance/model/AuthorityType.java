@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum AuthorityType {
+    ROLE_MEMBER("ROLE_MEMBER"),
     ROLE_STUDENT("ROLE_STUDENT"),
     ROLE_TEACHER("ROLE_TEACHER"),
     ROLE_ADMIN("ROLE_ADMIN");

@@ -13,9 +13,11 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="subject_id")
     private Subject subject;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="teacher_id")
     private Teacher teacher;
     private int term;
     private String semester;
@@ -50,5 +52,13 @@ public class Course {
 
     public void setSemester(String semester) {
         this.semester = semester;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }

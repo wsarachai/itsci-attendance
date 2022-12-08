@@ -8,7 +8,7 @@ import java.util.Set;
 @Table(name = "students")
 public class Student extends User {
     private String code;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="student")
     private Set<Register> registers;
 
     public String getCode() {

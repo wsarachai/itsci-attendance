@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="authorities")
@@ -19,6 +20,8 @@ public class Authority implements GrantedAuthority {
     @Column(length = 50, nullable = false, unique = true)
     private String authority;
     private String description;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "authorities")
+    private Set<Login> logins;
 
     public Authority() {}
 
@@ -48,6 +51,14 @@ public class Authority implements GrantedAuthority {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Login> getLogins() {
+        return logins;
+    }
+
+    public void setLogins(Set<Login> logins) {
+        this.logins = logins;
     }
 
     @Override

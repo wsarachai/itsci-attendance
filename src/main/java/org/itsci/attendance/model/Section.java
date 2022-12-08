@@ -3,7 +3,9 @@ package org.itsci.attendance.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "sections")
@@ -16,12 +18,17 @@ public class Section {
     private int sectionNumber;
     @ManyToOne
     private Course course;
-    @ManyToOne
-    private Room room;
-    private String startTime;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinTable(name = "section_teacher",
+            joinColumns= { @JoinColumn(name = "section_id")},
+            inverseJoinColumns= { @JoinColumn(name = "teacher_id")})
+    private Set<Teacher> teachers;
+    private Date startTime;
     private double duration;
-    @OneToMany
-    private List<Attendance> attendances;
+    @Column(columnDefinition="TEXT")
+    private String publicKey;
+    @Column(columnDefinition="TEXT")
+    private String privateKey;
 
     public long getId() {
         return id;
@@ -47,19 +54,19 @@ public class Section {
         this.course = course;
     }
 
-    public Room getRoom() {
-        return room;
+    public Set<Teacher> getTeachers() {
+        return teachers;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setTeachers(Set<Teacher> teachers) {
+        this.teachers = teachers;
     }
 
-    public String getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
@@ -71,11 +78,19 @@ public class Section {
         this.duration = duration;
     }
 
-    public List<Attendance> getAttendances() {
-        return attendances;
+    public String getPublicKey() {
+        return publicKey;
     }
 
-    public void setAttendances(List<Attendance> attendances) {
-        this.attendances = attendances;
+    public void setPublicKey(String publicKey) {
+        this.publicKey = publicKey;
+    }
+
+    public String getPrivateKey() {
+        return privateKey;
+    }
+
+    public void setPrivateKey(String privateKey) {
+        this.privateKey = privateKey;
     }
 }

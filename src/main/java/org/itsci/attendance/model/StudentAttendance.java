@@ -13,10 +13,11 @@ public class StudentAttendance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
-    @ManyToOne
-    private Attendance attendance;
     private Date attendanceTime;
     private String status;
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="student_id")
+    private Student student;
 
     public long getId() {
         return id;
@@ -24,14 +25,6 @@ public class StudentAttendance {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public Attendance getAttendance() {
-        return attendance;
-    }
-
-    public void setAttendance(Attendance attendance) {
-        this.attendance = attendance;
     }
 
     public Date getAttendanceTime() {
@@ -48,5 +41,13 @@ public class StudentAttendance {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

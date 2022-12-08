@@ -1,0 +1,146 @@
+h1, h2, h3, ul, ol, li {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+h1, ul, ol {
+    margin: 10px 0px 10px 0;
+}
+h1 {
+    text-align: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-bordered table,
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid black;
+}
+nav ul li {
+    display: inline;
+    list-style-type: none;
+}
+ul li:not(:last-child) {
+    margin-right: 10px;
+}
+a {
+    text-decoration: none;
+    color: blue;
+}
+header.center,
+footer.center,
+div.center {
+    text-align: center;
+}
+nav {
+    margin-bottom: 20px;
+    text-align: center;
+}
+footer {
+    margin-top: 20px;
+    text-align: center;
+}
+label {
+    text-align: right;
+}
+#container form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+label {
+    width: 100%;
+    display: inline-block;
+    text-align: right;
+}
+.container {
+    box-sizing: border-box;
+    width: 600px;
+    padding: 5px 0 20px 0;
+    margin: auto;
+}
+.number {
+    text-align: right;
+}
+.center {
+    text-align: center;
+    align-items: center;
+}
+.add-button {
+    border: 1px solid #666;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 120px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background: lightblue;
+}
+
+.save-button {
+    border: 1px solid #666;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 120px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background: green;
+    color: white;
+}
+
+.cancel-button {
+    border: 1px solid #666;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 120px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background: lightpink;
+}
+
+.info {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+.field-group {
+    width: 480px;
+}
+
+.field-group label {
+    display: inline;
+}
+
+.field-group ul li {
+    list-style-type: none;
+}
+
+input[type="text"],
+select {
+    width: 250px;
+}
+
+.search-form {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+form.search-form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.search-form label {
+    display: inline-block;
+    text-align: right;
+}
+
+.search-form input {
+    width: 388px;
+}
